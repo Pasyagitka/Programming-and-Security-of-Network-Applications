@@ -1,6 +1,7 @@
 /УчебноМетодическоеПособие
 **/Debug/
 **/.vs
+**/x64
 *.sln
 **/ClientT/*.vcxproj
 **/ClientT/*.vcxproj.filters
@@ -23,3 +24,16 @@
 **/ClientS/*.vcxproj
 **/ClientS/*.vcxproj.filters
 **/ClientS/*.vcxproj.user
+**/ClientNP/*.vcxproj
+**/ClientNP/*.vcxproj.filters
+**/ClientNP/*.vcxproj.user
+**/ClientNPct/*.vcxproj
+**/ClientNPct/*.vcxproj.filters
+**/ClientNPct/*.vcxproj.user
+**/ClientNPt/*.vcxproj
+**/ClientNPt/*.vcxproj.filters
+**/ClientNPt/*.vcxproj.user
+**/ServerNP/*.vcxproj
+**/ServerNP/*.vcxproj.filters
+**/ServerNP/*.vcxproj.user
+
