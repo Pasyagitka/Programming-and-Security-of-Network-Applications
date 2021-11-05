@@ -7,10 +7,12 @@ string GetErrorMsgText(int code);
 string SetPipeError(string msgText, int code);
 
 //#define NAME L"\\\\.\\pipe\\Tube"
-#define NAME L"\\\\PasyagitkaASUS\\pipe\\Tube"
+#define NAME L"\\\\PERKALPC\\pipe\\Tube"
 
 int main(int argc, char* argv[])
 {
+	setlocale(LC_ALL, "Russian");
+
 	HANDLE cH;
 	string stringbuf;
 	char rbuf[50];
@@ -33,9 +35,8 @@ int main(int argc, char* argv[])
 		begin = clock();
 
 		if (messagesNumber == 0) {
-			stringbuf = "\0";
-			if (!WriteFile(cH, stringbuf.c_str(), strlen(stringbuf.c_str()) + 1, wbytes, NULL))				throw SetPipeError("WriteFile: ", GetLastError());
-			if (!ReadFile(cH, rbuf, sizeof(rbuf), rbytes, NULL))											throw SetPipeError("ReadFile: ", GetLastError());
+			strcpy_s(wbuf, "\0");
+			if (!TransactNamedPipe(cH, wbuf, sizeof(wbuf), rbuf, sizeof(rbuf), &wb, NULL))				throw SetPipeError("TransactNamedPipe 0: ", GetLastError());
 			cout << "Shutting down the server..." << endl;
 		}
 		else {
@@ -46,8 +47,8 @@ int main(int argc, char* argv[])
 				if (!TransactNamedPipe(cH, wbuf, sizeof(wbuf), rbuf, sizeof(rbuf), &wb, NULL))				throw SetPipeError("TransactNamedPipe 1: ", GetLastError());
 				cout << "Return from server: " << rbuf << endl;
 
-				strcpy_s(wbuf, ("Hello from Client " + to_string(stoi(stringbuf.substr(18)) + 1) + "\0").c_str());
-				if (!TransactNamedPipe(cH, wbuf, sizeof(wbuf), rbuf, sizeof(rbuf), &wb, NULL))				throw SetPipeError("TransactNamedPipe 2: ", GetLastError());
+				//strcpy_s(wbuf, ("Hello from Client " + to_string(stoi(stringbuf.substr(18)) + 1) + "\0").c_str());
+				//if (!TransactNamedPipe(cH, wbuf, sizeof(wbuf), rbuf, sizeof(rbuf), &wb, NULL))				throw SetPipeError("TransactNamedPipe 2: ", GetLastError());
 			}
 		}
 		end = clock();

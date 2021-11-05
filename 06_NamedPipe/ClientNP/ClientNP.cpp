@@ -6,10 +6,12 @@ using namespace std;
 string GetErrorMsgText(int code);
 string SetPipeError(string msgText, int code);
 
-#define NAME L"\\\\PasyagitkaASUS\\pipe\\Tube"
+#define NAME L"\\\\PERKALPC\\pipe\\Tube"
+//#define NAME L"\\\\PasyagitkaASUS\\pipe\\Tube"
 
 int main(int argc, char* argv[])
 {
+	setlocale(LC_ALL, "Russian");
 	HANDLE cH;
 	string stringbuf;
 	char rbuf[50];
@@ -43,9 +45,9 @@ int main(int argc, char* argv[])
 
 				cout << "Return from server: " << rbuf << endl;
 
-				strcpy_s(wbuf, ("Hello from Client " + to_string(stoi(stringbuf.substr(18)) + 1) + "\0").c_str());
-				if (!WriteFile(cH, wbuf, sizeof(wbuf), wbytes, NULL))						throw SetPipeError("WriteFile: ", GetLastError());
-				if (!ReadFile(cH, rbuf, sizeof(rbuf), rbytes, NULL))						throw SetPipeError("ReadFile: ", GetLastError());
+				//strcpy_s(wbuf, ("Hello from Client " + to_string(stoi(stringbuf.substr(18)) + 1) + "\0").c_str());
+				//if (!WriteFile(cH, wbuf, sizeof(wbuf), wbytes, NULL))						throw SetPipeError("WriteFile: ", GetLastError());
+				//if (!ReadFile(cH, rbuf, sizeof(rbuf), rbytes, NULL))						throw SetPipeError("ReadFile: ", GetLastError());
 			}
 		}
 		end = clock();

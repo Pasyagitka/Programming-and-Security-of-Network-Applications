@@ -8,8 +8,8 @@ using namespace std;
 string GetErrorMsgText(int code);
 string SetPipeError(string msgText, int code);
 
-//#define NAME L"\\\\PERKALPC\\pipe\\Tube"
-#define NAME L"\\\\PasyagitkaASUS\\pipe\\Tube"
+#define NAME L"\\\\PERKALPC\\pipe\\Tube"
+//#define NAME L"\\\\PasyagitkaASUS\\pipe\\Tube"
 
 int main(int argc, char* argv[])
 {
@@ -45,8 +45,8 @@ int main(int argc, char* argv[])
 				cout << "Return from server: " << rbuf << endl;
 
 				string sbuf = rbuf;
-				strcpy_s(wbuf, ("Hello from Client " + to_string(stoi(sbuf.substr(18)) + 1) + "\0").c_str());
-				if (!CallNamedPipe(NAME, wbuf, wbufsize, rbuf, rbufsize, &rbufsize, NMPWAIT_WAIT_FOREVER)) 			throw SetPipeError("CallNamedPipe 2: ", GetLastError());
+				//strcpy_s(wbuf, ("Hello from Client " + to_string(stoi(sbuf.substr(18)) + 1) + "\0").c_str());
+				//if (!CallNamedPipe(NAME, wbuf, wbufsize, rbuf, rbufsize, &rbufsize, NMPWAIT_WAIT_FOREVER)) 			throw SetPipeError("CallNamedPipe 2: ", GetLastError());
 			}
 		end = clock();
 		cout << "Exchange time: " << ((double)(end - begin) / CLK_TCK) << " sec." << endl;
