@@ -36,6 +36,10 @@
 **/ServerNP/*.vcxproj
 **/ServerNP/*.vcxproj.filters
 **/ServerNP/*.vcxproj.user
-**/ServerMS/**
-**/ClientMS/**
+**/ClientMS/*.vcxproj
+**/ClientMS/*.vcxproj.filters
+**/ClientMS/*.vcxproj.user
+**/ServerMS/*.vcxproj
+**/ServerMS/*.vcxproj.filters
+**/ServerMS/*.vcxproj.user
 
