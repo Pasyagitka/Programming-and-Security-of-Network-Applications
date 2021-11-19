@@ -6,10 +6,10 @@ using namespace std;
 string GetErrorMsgText(int code);
 string SetMailslotError(string msgText, int code);
 
-//#define NAME L"\\\\.\\mailslot\\Box"
-#define NAME L"\\\\*\\mailslot\\Box"						//cannot write more than 424 bytes at a time to the mailslot. ERROR_BAD_NETPATH
+#define NAME L"\\\\.\\mailslot\\Box"
+//#define NAME L"\\\\*\\mailslot\\Box"						//cannot write more than 424 bytes at a time to the mailslot. ERROR_BAD_NETPATH
 //#define NAME L"\\\\PasyagitkaASUS\\mailslot\\Box"			
-#define MESSAGES_NUMBER 10
+#define MESSAGES_NUMBER 1000
 
 int main(int argc, char* argv[])
 {
@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
 		
 		begin = clock();
 		for (int i = 0; i < MESSAGES_NUMBER; i++) {
-			string stringbuf = "Hello from Mailslot-client " + to_string(i);						//* - придет, . придет, PA придет
-			//string stringbuf = "Hello from Mailslot-client " + to_string(i) + string(400, '.');	//* - не придет, . придет, PA не придет
+			//string stringbuf = "Hello from Mailslot-client " + to_string(i);						//* - придет, . придет, PA придет
+			string stringbuf = "Hello from Mailslot-client " + to_string(i) + string(400, '.');	//* - не придет, . придет, PA не придет
 			strcpy_s(wbuf, stringbuf.c_str());
 			if (!WriteFile(cH, wbuf, strlen(wbuf)+1, wbytes, NULL)) throw SetMailslotError("WriteFile: ", GetLastError());
 			cout << wbuf << endl;

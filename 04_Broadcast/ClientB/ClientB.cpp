@@ -40,7 +40,9 @@ bool GetServer(char* call, short port, struct sockaddr* from, int* flen)
     all.sin_family = AF_INET;
     all.sin_port = htons(port);
     //all.sin_addr.s_addr = INADDR_BROADCAST;
-    all.sin_addr.s_addr = inet_addr("172.20.10.15");
+    //all.sin_addr.s_addr = inet_addr("172.20.10.15");
+    all.sin_addr.s_addr = inet_addr("192.168.43.255");
+
 
     int optval = 1;
     char bfrom[50];

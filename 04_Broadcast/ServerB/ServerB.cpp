@@ -24,7 +24,10 @@ int main(int argc, char* argv[])
     server.sin_family = AF_INET;
     server.sin_port = htons(2000);
     //server.sin_addr.s_addr = INADDR_ANY; 
-    server.sin_addr.s_addr = inet_addr("172.20.10.2");
+    //server.sin_addr.s_addr = inet_addr("172.20.10.2");
+    server.sin_addr.s_addr = inet_addr("192.168.43.160");
+
+
 
     memset(&client, 0, sizeof(client));
     int lclient = sizeof(client);
@@ -101,8 +104,10 @@ void GetServer(char* call, short port, struct sockaddr* from, int* flen) {
     all.sin_family = AF_INET;
     all.sin_port = htons(port);
     //all.sin_addr.s_addr = INADDR_BROADCAST;
-    all.sin_addr.s_addr = inet_addr("172.20.10.15");
+    //all.sin_addr.s_addr = inet_addr("172.20.10.15");
+    all.sin_addr.s_addr = inet_addr("192.168.43.255");
 
+    
 
     int timeout = 1000;
 

@@ -15,12 +15,13 @@ string GetErrorMsgText(int code) // cформировать текст ошибки
 		return std::string(); //No error message has been recorded
 	}
 	else {
+		//if (errorMessageID == 121) return std::string("Превышен интервал времени ожидания");
 		return std::system_category().message(errorMessageID);
 	}
 };
 
 
-string SetPipeError(string msgText, int code)
+string SetMailslotError(string msgText, int code)
 {
 	return msgText + to_string(code) + ". " + GetErrorMsgText(code);
 };
